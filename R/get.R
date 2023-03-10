@@ -8,15 +8,25 @@
 #'
 #' @param use_rappdirs logical write files to operating system data directories at the location returned by \code{\link[rappdirs]{user_data_dir}}.
 #' @param year numeric choice of 2007 or 2012.
+#' @param local_path folder path to raw downloads from `nla_get`
+#' @inheritParams base::saveRDS
 #'
 #' @examples \donttest{
 #' nla_get(2012)
 #' }
-nla_get <- function(year, use_rappdirs = FALSE){
+nla_get <- function(year, use_rappdirs = FALSE, local_path = tempdir(), compress = "xz"){
 
   valid_year(year)
 
-  local_path   <- file.path(tempdir())
+  if(use_rappdirs & local_path != tempdir()){
+    stop("Set either use_rappdirs or local_path but not both.")
+  }
+
+  if(use_rappdirs){
+    local_path <- nla_path()
+    dir.create(local_path, showWarnings = FALSE)
+  }
+
   dir.create(local_path, showWarnings = FALSE)
 
   if(year == 2007){
@@ -54,13 +64,14 @@ nla_get <- function(year, use_rappdirs = FALSE){
       "nla2012_topsedhg_08192016.csv",
       "nla2012_wide_siteinfo_08232016.csv",
       "nla2012_waterchem_wide.csv",
-      "nla2012_zoopcond_08192016.csv",
-      "nla2012_zoopmets_08192016.csv",
-      "nla2012_zooptaxa_wide_10272015.csv")
+      "nla2012_zoopcond_08192016.csv"#,
+      # "nla2012_zoopmets_08192016.csv",
+      # "nla2012_zooptaxa_wide_10272015.csv"
+      )
 
     invisible(lapply(files, function(x) get_if_not_exists(paste0(baseurl, x),
                                         file.path(local_path, x))))
   }
 
-  invisible(nla_compile(year, use_rappdirs, local_path))
+  invisible(nla_compile(year, use_rappdirs, local_path, compress = compress))
 }

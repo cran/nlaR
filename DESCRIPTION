@@ -1,7 +1,7 @@
 Package: nlaR
 Title: Interface to the National Lakes Assessment
-Version: 0.4.0
-Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
+Version: 0.4.1
+Authors@R: person("Jemma", "Stachelek", email = "jemma.stachelek@gmail.com", role = c("aut", "cre"))
 Description: Client for programmatic access to the 2007 and 2012 National 
   Lakes Assessment database <https://www.epa.gov/national-aquatic-resource-surveys/nla> 
   containing data for hundreds of lakes in the lower 48 states of the contiguous US.
@@ -11,14 +11,14 @@ URL: https://github.com/jsta/nlaR
 BugReports: https://github.com/jsta/nlaR/issues
 License: GPL
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.1.1
-Suggests: knitr, rmarkdown, dplyr, magrittr, skimr, sf, maps, R.rsp
+RoxygenNote: 7.2.3
+Suggests: knitr, rmarkdown, dplyr, magrittr, skimr, sf, maps, R.rsp,
+        testthat
 VignetteBuilder: R.rsp, knitr
 Language: en-US
 NeedsCompilation: no
-Packaged: 2019-01-22 20:28:06 UTC; jose
-Author: Joseph Stachelek [aut, cre]
-Maintainer: Joseph Stachelek <stachel2@msu.edu>
+Packaged: 2023-03-08 13:54:30 UTC; jemma
+Author: Jemma Stachelek [aut, cre]
+Maintainer: Jemma Stachelek <jemma.stachelek@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-01-22 20:40:02 UTC
+Date/Publication: 2023-03-10 17:20:02 UTC
